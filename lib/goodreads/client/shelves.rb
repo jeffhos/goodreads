@@ -3,8 +3,8 @@ module Goodreads
 
     # Get books from a user's shelf
     def shelf(user_id, shelf_name, options={})
-      use_oauth = options[:oauth]
-      options = options.delete(:oauth).merge(:shelf => shelf_name, :v =>2)
+      use_oauth = options.delete(:oauth)
+      options = options.merge(:shelf => shelf_name, :v =>2)
       if (use_oauth)
         data = oauth_request("/review/list/#{user_id}.xml", options)
       else
